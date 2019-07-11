@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rUsuarios));
             this.FechaIngresodateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.UsuarioIDnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ClavetextBox = new System.Windows.Forms.TextBox();
@@ -172,7 +173,7 @@
             // 
             // Buscarbutton
             // 
-            this.Buscarbutton.Image = global::FerreteriaSystem.Properties.Resources.search_black_icon;
+            this.Buscarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Buscarbutton.Image")));
             this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Buscarbutton.Location = new System.Drawing.Point(198, 6);
             this.Buscarbutton.Name = "Buscarbutton";
@@ -181,10 +182,11 @@
             this.Buscarbutton.Text = "Buscar";
             this.Buscarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Buscarbutton.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
             // 
             // Eliminarbutton
             // 
-            this.Eliminarbutton.Image = global::FerreteriaSystem.Properties.Resources.delete_file_icon;
+            this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.Eliminarbutton.Location = new System.Drawing.Point(180, 275);
             this.Eliminarbutton.Name = "Eliminarbutton";
@@ -193,10 +195,11 @@
             this.Eliminarbutton.Text = "Eliminar";
             this.Eliminarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Eliminarbutton.UseVisualStyleBackColor = true;
+            this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
             // 
             // Guardarbutton
             // 
-            this.Guardarbutton.Image = global::FerreteriaSystem.Properties.Resources.Save_icon;
+            this.Guardarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Guardarbutton.Image")));
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Guardarbutton.Location = new System.Drawing.Point(97, 275);
             this.Guardarbutton.Name = "Guardarbutton";
@@ -205,10 +208,11 @@
             this.Guardarbutton.Text = "Guardar";
             this.Guardarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Guardarbutton.UseVisualStyleBackColor = true;
+            this.Guardarbutton.Click += new System.EventHandler(this.Guardarbutton_Click);
             // 
             // Nuevobutton
             // 
-            this.Nuevobutton.Image = global::FerreteriaSystem.Properties.Resources.Actions_contact_new_icon;
+            this.Nuevobutton.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton.Image")));
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.Nuevobutton.Location = new System.Drawing.Point(12, 275);
             this.Nuevobutton.Name = "Nuevobutton";
@@ -217,6 +221,7 @@
             this.Nuevobutton.Text = "Nuevo";
             this.Nuevobutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Nuevobutton.UseVisualStyleBackColor = true;
+            this.Nuevobutton.Click += new System.EventHandler(this.Nuevobutton_Click);
             // 
             // rUsuarios
             // 

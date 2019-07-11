@@ -60,10 +60,6 @@
       <Project>{fe2e2687-7eac-4b06-812a-0fbfac7bb801}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FerreteriaSystem\FerreteriaSystem.csproj">
-      <Project>{56a28977-ab05-462b-afad-5e7ba9e6578d}</Project>
-      <Name>FerreteriaSystem</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
