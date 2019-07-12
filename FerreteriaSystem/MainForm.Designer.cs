@@ -76,7 +76,7 @@
             // cUsuariosToolStripMenuItem
             // 
             this.cUsuariosToolStripMenuItem.Name = "cUsuariosToolStripMenuItem";
-            this.cUsuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cUsuariosToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.cUsuariosToolStripMenuItem.Text = "cUsuarios";
             this.cUsuariosToolStripMenuItem.Click += new System.EventHandler(this.CUsuariosToolStripMenuItem_Click);
             // 
@@ -91,8 +91,9 @@
             // repUsuariosToolStripMenuItem
             // 
             this.repUsuariosToolStripMenuItem.Name = "repUsuariosToolStripMenuItem";
-            this.repUsuariosToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.repUsuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.repUsuariosToolStripMenuItem.Text = "repUsuarios";
+            this.repUsuariosToolStripMenuItem.Click += new System.EventHandler(this.RepUsuariosToolStripMenuItem_Click);
             // 
             // MainForm
             // 

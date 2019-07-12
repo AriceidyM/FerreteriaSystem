@@ -1,5 +1,6 @@
 ﻿using FerreteriaSystem.Consultas;
 using FerreteriaSystem.Registros;
+using FerreteriaSystem.Reportes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,12 @@ namespace FerreteriaSystem
         private void CUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cUsuarios us = new cUsuarios();
+            us.Show();
+        }
+
+        private void RepUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            repoUsuarios us = new repoUsuarios();
             us.Show();
         }
     }
