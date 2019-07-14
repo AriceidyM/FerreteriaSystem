@@ -37,5 +37,17 @@ namespace FerreteriaSystem
             repoUsuarios us = new repoUsuarios();
             us.Show();
         }
+
+        private void RClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rClientes cli = new rClientes();
+            cli.Show();
+        }
+
+        private void RProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rProductos pro = new rProductos();
+            pro.Show();
+        }
     }
 }

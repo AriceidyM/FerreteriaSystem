@@ -11,6 +11,8 @@ namespace DAL
     public class FerreteriaContexto : DbContext
     {
         public DbSet<Usuarios> usuario { get; set; }
+        public DbSet<Clientes> clientes { get; set; }
+        public DbSet<Productos> productos { get; set; }
         public FerreteriaContexto() : base("ConStr")
         { }
     }

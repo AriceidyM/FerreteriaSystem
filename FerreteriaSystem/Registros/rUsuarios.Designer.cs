@@ -188,7 +188,7 @@
             // 
             this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Eliminarbutton.Location = new System.Drawing.Point(180, 275);
+            this.Eliminarbutton.Location = new System.Drawing.Point(180, 260);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(78, 34);
             this.Eliminarbutton.TabIndex = 32;
@@ -201,7 +201,7 @@
             // 
             this.Guardarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Guardarbutton.Image")));
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Guardarbutton.Location = new System.Drawing.Point(97, 275);
+            this.Guardarbutton.Location = new System.Drawing.Point(97, 260);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(77, 34);
             this.Guardarbutton.TabIndex = 31;
@@ -214,7 +214,7 @@
             // 
             this.Nuevobutton.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton.Image")));
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Nuevobutton.Location = new System.Drawing.Point(12, 275);
+            this.Nuevobutton.Location = new System.Drawing.Point(12, 260);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(79, 34);
             this.Nuevobutton.TabIndex = 30;
@@ -227,7 +227,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 326);
+            this.ClientSize = new System.Drawing.Size(285, 312);
             this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);

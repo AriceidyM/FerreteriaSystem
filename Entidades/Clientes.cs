@@ -16,7 +16,7 @@ namespace Entidades
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Celular { get; set; }
-        public DateTime FechaIngreso { get; set; }
+        public DateTime Fecha { get; set; }
 
         public Clientes()
         {
@@ -26,7 +26,7 @@ namespace Entidades
             Direccion = string.Empty;
             Telefono = string.Empty;
             Celular = string.Empty;
-            FechaIngreso = DateTime.Now;
+            Fecha = DateTime.Now;
         }
     }
 }
