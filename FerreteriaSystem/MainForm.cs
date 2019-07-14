@@ -49,5 +49,11 @@ namespace FerreteriaSystem
             rProductos pro = new rProductos();
             pro.Show();
         }
+
+        private void REntradaInventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rEntradaInventario inv = new rEntradaInventario();
+            inv.Show();
+        }
     }
 }

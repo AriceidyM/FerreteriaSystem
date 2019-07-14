@@ -60,6 +60,7 @@
             // 
             this.ExistenciatextBox.Location = new System.Drawing.Point(88, 94);
             this.ExistenciatextBox.Name = "ExistenciatextBox";
+            this.ExistenciatextBox.ReadOnly = true;
             this.ExistenciatextBox.Size = new System.Drawing.Size(100, 20);
             this.ExistenciatextBox.TabIndex = 24;
             // 
