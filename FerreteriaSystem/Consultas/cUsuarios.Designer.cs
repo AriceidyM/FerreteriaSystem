@@ -37,8 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Quitarbutton = new System.Windows.Forms.Button();
             this.Consultarbutton = new System.Windows.Forms.Button();
+            this.Imprimirbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,19 +136,6 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Desde";
             // 
-            // Quitarbutton
-            // 
-            this.Quitarbutton.Image = global::FerreteriaSystem.Properties.Resources.Close_icon;
-            this.Quitarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Quitarbutton.Location = new System.Drawing.Point(14, 304);
-            this.Quitarbutton.Name = "Quitarbutton";
-            this.Quitarbutton.Size = new System.Drawing.Size(116, 26);
-            this.Quitarbutton.TabIndex = 30;
-            this.Quitarbutton.Text = "Quitar";
-            this.Quitarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Quitarbutton.UseVisualStyleBackColor = true;
-            this.Quitarbutton.Click += new System.EventHandler(this.Quitarbutton_Click);
-            // 
             // Consultarbutton
             // 
             this.Consultarbutton.Image = global::FerreteriaSystem.Properties.Resources.Search_icon;
@@ -163,12 +150,24 @@
             this.Consultarbutton.UseVisualStyleBackColor = true;
             this.Consultarbutton.Click += new System.EventHandler(this.Consultarbutton_Click);
             // 
+            // Imprimirbutton
+            // 
+            this.Imprimirbutton.Image = global::FerreteriaSystem.Properties.Resources.Print_icon;
+            this.Imprimirbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Imprimirbutton.Location = new System.Drawing.Point(452, 307);
+            this.Imprimirbutton.Name = "Imprimirbutton";
+            this.Imprimirbutton.Size = new System.Drawing.Size(73, 26);
+            this.Imprimirbutton.TabIndex = 42;
+            this.Imprimirbutton.Text = "Imprimir";
+            this.Imprimirbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Imprimirbutton.UseVisualStyleBackColor = true;
+            // 
             // cUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 333);
-            this.Controls.Add(this.Quitarbutton);
+            this.ClientSize = new System.Drawing.Size(536, 337);
+            this.Controls.Add(this.Imprimirbutton);
             this.Controls.Add(this.ConsultadataGridView);
             this.Controls.Add(this.CriteriotextBox);
             this.Controls.Add(this.FiltrocomboBox);
@@ -200,6 +199,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Quitarbutton;
+        private System.Windows.Forms.Button Imprimirbutton;
     }
 }

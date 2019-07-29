@@ -11,13 +11,13 @@ namespace Entidades
     {
         [Key]
         public int EntradaInventarioId { get; set; }
-        public string Producto { get; set; }
-        public Decimal Cantidad { get; set; }
+        public int ProductoId { get; set; }
+        public int Cantidad { get; set; }
         public DateTime Fecha { get; set; }
         public EntradaInventario()
         {
             EntradaInventarioId = 0;
-            Producto = string.Empty;
+            ProductoId = 0;
             Cantidad = 0;
             Fecha = DateTime.Now;
 

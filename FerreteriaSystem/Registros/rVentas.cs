@@ -17,16 +17,13 @@ namespace FerreteriaSystem.Registros
 {
     public partial class rVentas : Form
     {
+        public List<VentasDetalle> Detalle { get; set; }
         public rVentas()
         {
             InitializeComponent();
-            LLenarClientes();
-            ClientecomboBox.Text = null;
-            LLenarProducto();
-            ProductocomboBox.Text = null;
-
+            this.Detalle = new List<VentasDetalle>();
+            LlenarComboBox();
         }
-
         private int ToInt(object valor)
         {
             int retorno = 0;
@@ -34,103 +31,44 @@ namespace FerreteriaSystem.Registros
             return retorno;
 
         }
-
-        private void Anadir()
-        {
-            List<VentasDetalle> detalle = new List<VentasDetalle>();
-
-            if (VentasdataGridView.DataSource != null)
-            {
-                detalle = (List<VentasDetalle>)VentasdataGridView.DataSource;
-            }
-            decimal Total = 0;
-            decimal ITBIS = 0;
-            decimal Subtotal = 0;
-            foreach (var item in detalle)
-            {
-                Total += item.importe;
-            }
-            ITBIS = Total * 0.18m;
-            Subtotal = Total - ITBIS;
-            SubtotalnumericUpDown.Value = Subtotal;
-            ITBISnumericUpDown.Value = ITBIS;
-            TotalnumericUpDown.Value = Total;
-        }
-        private bool Validar()
-        {
-            bool paso = true;
-           
-            errorProvider.Clear();
-
-            if (ClientecomboBox.Text == string.Empty)
-            {
-                errorProvider.SetError(ClientecomboBox, "Favor LLenar, Campo no puede estar vacio");
-                paso = false;
-            }
-            if (ProductocomboBox.Text == string.Empty)
-            {
-                errorProvider.SetError(ProductocomboBox, "Favor LLenar, Campo no puede estar vacio");
-                paso = false;
-            }
-            if (CantidadnumericUpDown.Value == 0)
-            {
-                errorProvider.SetError(CantidadnumericUpDown, "Favor LLenar, Campo no puede estar vacio");
-                paso = false;
-            }
-            return paso;
-        }
-
         private void LlenarPrecio()
         {
             Repositorio<Productos> repositorio = new Repositorio<Productos>();
             List<Productos> lista = repositorio.GetList(c => c.Descripcion == ProductocomboBox.Text);
             foreach (var item in lista)
             {
-                PrecionumericUpDown.Value = item.Precio;
+                PrecioTextBox.Text = item.Precio.ToString();
             }
         }
-        private void LLenarClientes()
+
+        private void LlenarComboBox()
         {
             Repositorio<Clientes> db = new Repositorio<Clientes>(new DAL.FerreteriaContexto());
-            var lista = new List<Clientes>();
-            lista = db.GetList(l => true);
-            ClientecomboBox.DataSource = lista;
-            ClientecomboBox.DisplayMember = "Nombres";
+            Repositorio<Productos> dbp = new Repositorio<Productos>(new DAL.FerreteriaContexto());
+            ClientecomboBox.DataSource = db.GetList(c => true);
             ClientecomboBox.ValueMember = "ClienteId";
+            ClientecomboBox.DisplayMember = "Nombres";
+            ProductocomboBox.DataSource = dbp.GetList(c => true);
+            ProductocomboBox.ValueMember = "ProductoId";
+            ProductocomboBox.DisplayMember = "Descripcion";
         }
 
-        private void LLenarProducto()
-        {
-            Repositorio<Productos> db = new Repositorio<Productos>(new DAL.FerreteriaContexto());
-            var lista = new List<Productos>();
-            lista = db.GetList(l => true);
-            ProductocomboBox.DataSource = lista;
-            ProductocomboBox.DisplayMember = "Descripcion";
-            ProductocomboBox.ValueMember = "ProductoId";
-        }
         private void LlenaCampos(Ventas ventas)
         {
+
             VentasDetalle detalle = new VentasDetalle();
-
-            IdnumericUpDown.Value = 0;
-            FechadateTimePicker.Value = DateTime.Now;
-            CantidadnumericUpDown.Value = 0;
-            PrecionumericUpDown.Value = 0;
-            ImportetextBox.Clear();
-
-
-            IdnumericUpDown.Value = ventas.VentaID;
+            IdnumericUpDown.Value = ventas.VentaId;
+            FechadateTimePicker.Value = ventas.Fecha; ;
             FechadateTimePicker.Value = ventas.Fecha;
-            SubtotalnumericUpDown.Value = ventas.SubTotal;
-            ITBISnumericUpDown.Value = ventas.ITBIS;
-            TotalnumericUpDown.Value = ventas.Total;
-
+            SubTotaltextBox.Text = ventas.SubTotal.ToString();
+            ItbistextBox.Text = ventas.ITBIS.ToString();
+            TotaltextBox.Text = ventas.Total.ToString();
 
             //Cargar el detalle al Grid
             VentasdataGridView.DataSource = ventas.Detalle;
 
-            VentasdataGridView.Columns["ID"].Visible = false;
-            VentasdataGridView.Columns["VentasID"].Visible = false;
+            VentasdataGridView.Columns["Id"].Visible = false;
+            VentasdataGridView.Columns["VentasId"].Visible = false;
             VentasdataGridView.Columns["ClienteId"].Visible = false;
             VentasdataGridView.Columns["ProductoId"].Visible = false;
         }
@@ -138,39 +76,76 @@ namespace FerreteriaSystem.Registros
         private Ventas LlenaClase()
         {
             Ventas ventas = new Ventas();
-            ventas.VentaID = Convert.ToInt32(IdnumericUpDown.Value);
+            ventas.VentaId = Convert.ToInt32(IdnumericUpDown.Value);
             ventas.ClienteId = Convert.ToInt32(ClientecomboBox.SelectedValue);
-            ventas.ProductoId = Convert.ToInt32(ProductocomboBox.SelectedValue);
-            ventas.SubTotal = Convert.ToInt32(SubtotalnumericUpDown.Value);
-            ventas.ITBIS = Convert.ToInt32(ITBISnumericUpDown.Value);
-            ventas.Total = Convert.ToInt32(TotalnumericUpDown.Value);
+            ventas.Fecha = FechadateTimePicker.Value;
+            ventas.SubTotal = Convert.ToInt32(SubTotaltextBox.Text);
+            ventas.ITBIS = Convert.ToInt32(ItbistextBox.Text);
+            ventas.Total = Convert.ToInt32(TotaltextBox.Text);
 
             foreach (DataGridViewRow item in VentasdataGridView.Rows)
             {
-                ventas.AgregarDetalle
-                    (ToInt(item.Cells["ID"].Value),
-                Convert.ToInt32(item.Cells["VentasID"].Value),
-                Convert.ToInt32(item.Cells["ClienteId"].Value),
-                Convert.ToInt32(item.Cells["ProductoId"].Value),
-                Convert.ToInt32(item.Cells["Precio"].Value),
-                Convert.ToInt32(item.Cells["Cantidad"].Value),
-                Convert.ToInt32(item.Cells["importe"].Value)
-
-
+                ventas.AgregarDetalle(
+                    ToInt(item.Cells["Id"].Value),
+                    ToInt(item.Cells["VentaId"].Value),
+                    ToInt(item.Cells["ProductoId"].Value),
+                    item.Cells["Descripcion"].ToString(),
+                    ToInt(item.Cells["Precio"].Value),
+                    ToInt(item.Cells["Cantidad"].Value),
+                    ToInt(item.Cells["Importe"].Value)
                 );
-
-                
             }
 
-
-
-            Anadir();
             return ventas;
-            
         }
         private void RVentas_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void LlenarValores()
+        {
+            List<VentasDetalle> detalle = new List<VentasDetalle>();
+
+            if (VentasdataGridView.DataSource != null)
+            {
+                detalle = (List<VentasDetalle>)VentasdataGridView.DataSource;
+            }
+            int Total = 0;
+            int Itbis = 0;
+            int SubTotal = 0;
+            foreach (var item in detalle)
+            {
+                Total += item.Importe;
+            }
+            Itbis = (Total * 18)/100;
+            SubTotal = Total - Itbis;
+            SubTotaltextBox.Text = SubTotal.ToString();
+            ItbistextBox.Text = Itbis.ToString();
+            TotaltextBox.Text = Total.ToString();
+        }
+
+        private void RebajarValores()
+        {
+            List<VentasDetalle> detalle = new List<VentasDetalle>();
+
+            if (VentasdataGridView.DataSource != null)
+            {
+                detalle = (List<VentasDetalle>)VentasdataGridView.DataSource;
+            }
+            int Total = 0;
+            int Itbis = 0;
+            int SubTotal = 0;
+            foreach (var item in detalle)
+            {
+                Total -= item.Importe;
+            }
+            Total *= (-1);
+            Itbis = (Total * 18) /100;
+            SubTotal = Total - Itbis;
+            SubTotaltextBox.Text = SubTotal.ToString();
+            ItbistextBox.Text = Itbis.ToString();
+            TotaltextBox.Text = Total.ToString();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -190,83 +165,35 @@ namespace FerreteriaSystem.Registros
             else
             {
                 detalle.Add(
-                    new VentasDetalle(iD: 0,
-                    ventasID: (int)Convert.ToInt32(IdnumericUpDown.Value),
-                    clienteId: (int)ClientecomboBox.SelectedValue,
-                    productoId: (int)ProductocomboBox.SelectedValue,
-
-
-                        cantidad: Convert.ToInt32(CantidadnumericUpDown.Value),
-                        precio: Convert.ToInt32(PrecionumericUpDown.Value),
-                        importe: Convert.ToInt32(ImportetextBox.Text)
+                    new VentasDetalle(
+                       id: 0,
+                       ventaId: (int)IdnumericUpDown.Value,
+                       productoId: (int)ProductocomboBox.SelectedValue,
+                       descripcion: ProductocomboBox.Text,
+                       cantidad: ToInt(CantidadnumericUpDown.Value),
+                       precio: ToInt(PrecioTextBox.Text),
+                       importe: ToInt(ImportetextBox.Text)
 
                     ));
 
                 VentasdataGridView.DataSource = null;
                 VentasdataGridView.DataSource = detalle;
-
-                VentasdataGridView.Columns["VentasID"].Visible = false;
-                VentasdataGridView.Columns["ClienteId"].Visible = false;
-                VentasdataGridView.Columns["ProductoId"].Visible = false;
-
-
-                //int subtotal = 0;
-                //int total = 0;
-                //foreach (var item in detalle)
-                //{
-                //    subtotal += item.importe;
-                //}
-
-                //SubtotalnumericUpDown.Text = subtotal.ToString();
-
-                //total += subtotal;
-
-                //TotalnumericUpDown.Text = total.ToString();
-
-                int subtotal = 0;
-                int total = 0;
-                foreach (var item in detalle)
-                {
-                    subtotal += item.importe;
-                }
-                SubtotalnumericUpDown.Text = (subtotal * Convert.ToDecimal(0.82)).ToString();
-                total += subtotal;
-                TotalnumericUpDown.Text = total.ToString();
+                LlenarValores();
             }
         }
 
+
         private void Quitarbutton_Click(object sender, EventArgs e)
         {
-            if (VentasdataGridView.Rows.Count > 0
-              && VentasdataGridView.CurrentRow != null)
+            if (VentasdataGridView.Rows.Count > 0 && VentasdataGridView.CurrentRow != null)
             {
-
                 List<VentasDetalle> detalle = (List<VentasDetalle>)VentasdataGridView.DataSource;
 
                 detalle.RemoveAt(VentasdataGridView.CurrentRow.Index);
 
-
-                int subtotal = 0;
-                int total = 0;
-
-                foreach (var item in detalle)
-                {
-                    subtotal += item.importe;
-                }
-
-                SubtotalnumericUpDown.Text = subtotal.ToString();
-
-                total += Convert.ToInt32(SubtotalnumericUpDown.Text);
-
-                TotalnumericUpDown.Text = total.ToString();
-
                 VentasdataGridView.DataSource = null;
                 VentasdataGridView.DataSource = detalle;
-
-
-                VentasdataGridView.Columns["VentasID"].Visible = false;
-                VentasdataGridView.Columns["ClienteId"].Visible = false;
-                VentasdataGridView.Columns["ProductoId"].Visible = false;
+                RebajarValores();
             }
         }
         private void Limpiar()
@@ -274,15 +201,29 @@ namespace FerreteriaSystem.Registros
             IdnumericUpDown.Value = 0;
             ClientecomboBox.Text = string.Empty;
             ProductocomboBox.Text = string.Empty;
-            PrecionumericUpDown.Value = 0;
+            PrecioTextBox.Clear();
             CantidadnumericUpDown.Value = 0;
             ImportetextBox.Text = string.Empty;
-            SubtotalnumericUpDown.Value = 0;
-            ITBISnumericUpDown.Value = 0;
-            TotalnumericUpDown.Value = 0;
+            SubTotaltextBox.Clear();
+            ItbistextBox.Clear();
+            TotaltextBox.Clear();
             FechadateTimePicker.Value = DateTime.Now;
             VentasdataGridView.DataSource = string.Empty;
             errorProvider.Clear();
+        }
+
+        private bool Validar()
+        {
+            bool estado = false;
+
+            if (VentasdataGridView.RowCount == 0)
+            {
+                errorProvider.SetError(VentasdataGridView,
+                    "Debe Agregar");
+                estado = true;
+            }
+
+            return estado;
         }
 
         private void Nuevobutton_Click(object sender, EventArgs e)
@@ -298,71 +239,81 @@ namespace FerreteriaSystem.Registros
         }
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
-            if (!Validar())
+            Ventas venta;
+            bool Paso = false;
+
+            if (Validar())
+            {
+                MessageBox.Show("Favor revisar todos los campos!!", "Validación!!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
 
-            bool paso = false;
-            Repositorio<Ventas> dbe = new Repositorio<Ventas>();
-            Ventas ventas = new Ventas();
-
-            ventas = LlenaClase();
+            venta = LlenaClase();
 
             if (IdnumericUpDown.Value == 0)
             {
-                paso = dbe.Guardar(ventas);
+                Paso = VentasBLL.Guardar(venta);
+                MessageBox.Show("Guardado!!", "Exito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                if (!ExisteEnLaBaseDeDatos())
+                int id = Convert.ToInt32(IdnumericUpDown.Value);
+                Ventas fac = VentasBLL.Buscar(id);
+
+                if (fac != null)
                 {
-                    MessageBox.Show("No se puede modificar", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    Paso = VentasBLL.Modificar(venta);
+                    MessageBox.Show("Modificado!!", "Exito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                paso = dbe.Modificar(ventas);
+                else
+                    MessageBox.Show("Id no existe", "Falló",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (paso)
-                MessageBox.Show("Guardado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (Paso)
+            {
+                Limpiar();
+            }
             else
-                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            Limpiar();
+                MessageBox.Show("No se pudo guardar!!", "Fallo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
-            Repositorio<Ventas> dbe = new Repositorio<Ventas>();
-            if (!ExisteEnLaBaseDeDatos())
+            int id = Convert.ToInt32(IdnumericUpDown.Value);
+
+            Ventas venta = VentasBLL.Buscar(id);
+
+            if (venta != null)
             {
-                MessageBox.Show("No se puede Eliminar un usuario que no existe", "fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (VentasBLL.Eliminar(id))
+                {
+                    MessageBox.Show("Eliminado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
+                }
+                else
+                    MessageBox.Show("No se pudo eliminar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            errorProvider.Clear();
-            int id;
-            int.TryParse(IdnumericUpDown.Text, out id);
-
-            Limpiar();
-
-            if (dbe.Eliminar(id))
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                errorProvider.SetError(IdnumericUpDown, "No se puede eliminar un usuario que no existe");
+                MessageBox.Show("No existe!!", "Falló", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
-            int id;
-            Ventas ventas = new Ventas();
-            Repositorio<Ventas> dbe = new Repositorio<Ventas>();
-            int.TryParse(IdnumericUpDown.Text, out id);
-            Limpiar();
-            ventas = dbe.Buscar(id);
+            int id = Convert.ToInt32(IdnumericUpDown.Value);
+            Ventas venta = VentasBLL.Buscar(id);
 
-            if (ventas != null)
+            if (venta != null)
             {
-                LlenaCampos(ventas);
+                LlenaCampos(venta);
             }
             else
-                MessageBox.Show("Usuario no encontrado");
+                MessageBox.Show("No se encontró!!!", "Falló",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void ClientecomboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -374,13 +325,13 @@ namespace FerreteriaSystem.Registros
         {
             rClientes cli = new rClientes();
             cli.ShowDialog();
-            LLenarClientes();
+            LlenarComboBox();
         }
 
         private void ProductocomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LlenarPrecio();
-            if (CantidadnumericUpDown.Text != "0")
+            if (CantidadnumericUpDown.Value != 0)
             {
                 LlenarImporte();
             }
@@ -393,20 +344,19 @@ namespace FerreteriaSystem.Registros
             var lista = new List<Productos>();
             foreach (var item in lista)
             {
-                PrecionumericUpDown.Value = item.Precio;
+                PrecioTextBox.Text = item.Precio.ToString();
                 //PreciotextBox.Text = item.Precio.ToString();
             }
         }
         private void LlenarImporte()
         {
-            Repositorio<Productos> db = new Repositorio<Productos>(new DAL.FerreteriaContexto());
-            decimal cantidad = 0;
-            decimal precio = 0;
-
-            cantidad = CantidadnumericUpDown.Value;
-            precio = PrecionumericUpDown.Value;
-           // ImportetextBox.Text = ;
-           // ImportetextBox.Text = repositorio.Importe(cantidad, precio).ToString();
+            int cantidad = 0;
+            int precio = 0;
+            int resultado = 0;
+            cantidad = Convert.ToInt32(CantidadnumericUpDown.Value);
+            precio = ToInt(PrecioTextBox.Text);
+            resultado = cantidad * precio;
+            ImportetextBox.Text = PrecioTextBox.Text;
         }
 
         private void PrecionumericUpDown_ValueChanged_1(object sender, EventArgs e)
@@ -417,36 +367,9 @@ namespace FerreteriaSystem.Registros
 
         private void CantidadnumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            int cantidad = 0;
-            decimal precio = 0;
-            decimal resultado = 0;
-            cantidad = Convert.ToInt32(CantidadnumericUpDown.Text);
-            precio = Convert.ToDecimal(PrecionumericUpDown.Text);
-            resultado = cantidad * precio;
-            ImportetextBox.Text = resultado.ToString();
+            LlenarPrecio();
+            LlenarImporte();
         }
-        private void Calculo()
-        {
-            List<VentasDetalle> detalle = new List<VentasDetalle>();
-
-            if (VentasdataGridView.DataSource != null)
-            {
-                detalle = (List<VentasDetalle>)VentasdataGridView.DataSource;
-            }
-            decimal Total = 0;
-            decimal Itbis = 0;
-            decimal SubTotal = 0;
-            foreach (var item in detalle)
-            {
-                Total += item.importe;
-            }
-            Itbis = Total * 0.18m;
-            SubTotal = Total - Itbis;
-            SubtotalnumericUpDown.Text = SubTotal.ToString();
-            ITBISnumericUpDown.Text = Itbis.ToString();
-            TotalnumericUpDown.Text = Total.ToString();
-        }
-
         private void ImportetextBox_TextChanged(object sender, EventArgs e)
         {
 

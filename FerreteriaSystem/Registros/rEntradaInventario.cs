@@ -17,12 +17,22 @@ namespace FerreteriaSystem.Registros
         public rEntradaInventario()
         {
             InitializeComponent();
+            LlenarComboBox();
+        }
+
+        private void LlenarComboBox()
+        {
+            Repositorio<Productos> ArtRepositorio = new Repositorio<Productos>();
+
+            ProductocomboBox.DataSource = ArtRepositorio.GetList(c => true);
+            ProductocomboBox.ValueMember = "ProductoId";
+            ProductocomboBox.DisplayMember = "Descripcion";
         }
         private EntradaInventario LlenaClase()
         {
             EntradaInventario inventario = new EntradaInventario();
             inventario.EntradaInventarioId = Convert.ToInt32(EntradaInventarioIdnumericUpDown.Value);
-            inventario.Producto = ProductotextBox.Text;
+            inventario.ProductoId = Convert.ToInt32(ProductocomboBox.SelectedValue);
             inventario.Cantidad = Convert.ToInt32(CantidadnumericUpDown.Value);
             inventario.Fecha = DateTime.Now;
 
@@ -31,7 +41,7 @@ namespace FerreteriaSystem.Registros
         private void LlenaCampo(EntradaInventario inventario)
         {
             EntradaInventarioIdnumericUpDown.Value = inventario.EntradaInventarioId;
-            ProductotextBox.Text = inventario.Producto;
+            ProductocomboBox.SelectedValue = inventario.ProductoId;
             CantidadnumericUpDown.Value = inventario.Cantidad;
             FechadateTimePicker.Value = inventario.Fecha;
         }
@@ -42,9 +52,9 @@ namespace FerreteriaSystem.Registros
            
             errorProvider.Clear();
 
-            if (ProductotextBox.Text == string.Empty)
+            if (CantidadnumericUpDown.Value == 0)
             {
-                errorProvider.SetError(ProductotextBox, "Favor LLenar");
+                errorProvider.SetError(CantidadnumericUpDown, "No puede ser Cero");
                 paso = false;
             }
            
@@ -53,7 +63,7 @@ namespace FerreteriaSystem.Registros
         private void Limpiar()
         {
             EntradaInventarioIdnumericUpDown.Value = 0;
-            ProductotextBox.Text = string.Empty;
+            ProductocomboBox.SelectedIndex = 0;
             CantidadnumericUpDown.Value = 0;
             FechadateTimePicker.Value = DateTime.Now;
             errorProvider.Clear();
@@ -74,7 +84,7 @@ namespace FerreteriaSystem.Registros
             if (!Validar())
                 return;
             bool paso = false;
-            Repositorio<EntradaInventario> dbe = new Repositorio<EntradaInventario>();
+            EntradasBLL dbe = new EntradasBLL();
             EntradaInventario inventario = new EntradaInventario();
 
             inventario = LlenaClase();
@@ -103,7 +113,7 @@ namespace FerreteriaSystem.Registros
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
-            Repositorio<EntradaInventario> dbe = new Repositorio<EntradaInventario>();
+            EntradasBLL dbe = new EntradasBLL();
             if (!ExisteEnLaBaseDeDatos())
             {
                 MessageBox.Show("No se puede Eliminar un producto que no existe", "fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -16,7 +16,6 @@ namespace Entidades
         public Decimal Precio { get; set; }
         public DateTime Fecha { get; set; }
 
-
         public Productos()
         {
             ProductoId = 0;

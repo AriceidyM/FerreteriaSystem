@@ -42,13 +42,15 @@
             this.NombrestextBox = new System.Windows.Forms.TextBox();
             this.EmailtextBox = new System.Windows.Forms.TextBox();
             this.DirecciontextBox = new System.Windows.Forms.TextBox();
-            this.TelefonotextBox = new System.Windows.Forms.TextBox();
-            this.CelulartextBox = new System.Windows.Forms.TextBox();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.Nuevobutton = new System.Windows.Forms.Button();
             this.Eliminarbutton = new System.Windows.Forms.Button();
             this.Guardarbutton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.DeudatextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.TelefonotextBox = new System.Windows.Forms.MaskedTextBox();
+            this.CelulartextBox = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ClienteIdnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +85,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 136);
+            this.label4.Location = new System.Drawing.Point(12, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 3;
@@ -153,20 +155,6 @@
             this.DirecciontextBox.Size = new System.Drawing.Size(161, 20);
             this.DirecciontextBox.TabIndex = 11;
             // 
-            // TelefonotextBox
-            // 
-            this.TelefonotextBox.Location = new System.Drawing.Point(79, 174);
-            this.TelefonotextBox.Name = "TelefonotextBox";
-            this.TelefonotextBox.Size = new System.Drawing.Size(161, 20);
-            this.TelefonotextBox.TabIndex = 12;
-            // 
-            // CelulartextBox
-            // 
-            this.CelulartextBox.Location = new System.Drawing.Point(79, 211);
-            this.CelulartextBox.Name = "CelulartextBox";
-            this.CelulartextBox.Size = new System.Drawing.Size(161, 20);
-            this.CelulartextBox.TabIndex = 13;
-            // 
             // Buscarbutton
             // 
             this.Buscarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Buscarbutton.Image")));
@@ -184,7 +172,7 @@
             // 
             this.Nuevobutton.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton.Image")));
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Nuevobutton.Location = new System.Drawing.Point(10, 274);
+            this.Nuevobutton.Location = new System.Drawing.Point(8, 321);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(71, 34);
             this.Nuevobutton.TabIndex = 35;
@@ -197,7 +185,7 @@
             // 
             this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Eliminarbutton.Location = new System.Drawing.Point(167, 274);
+            this.Eliminarbutton.Location = new System.Drawing.Point(165, 321);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(73, 34);
             this.Eliminarbutton.TabIndex = 37;
@@ -210,7 +198,7 @@
             // 
             this.Guardarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Guardarbutton.Image")));
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Guardarbutton.Location = new System.Drawing.Point(87, 274);
+            this.Guardarbutton.Location = new System.Drawing.Point(85, 321);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(74, 34);
             this.Guardarbutton.TabIndex = 36;
@@ -223,19 +211,54 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // DeudatextBox
+            // 
+            this.DeudatextBox.Location = new System.Drawing.Point(79, 277);
+            this.DeudatextBox.Name = "DeudatextBox";
+            this.DeudatextBox.ReadOnly = true;
+            this.DeudatextBox.Size = new System.Drawing.Size(80, 20);
+            this.DeudatextBox.TabIndex = 39;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 280);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(39, 13);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Deuda";
+            // 
+            // TelefonotextBox
+            // 
+            this.TelefonotextBox.Location = new System.Drawing.Point(79, 171);
+            this.TelefonotextBox.Mask = "(999)000-0000";
+            this.TelefonotextBox.Name = "TelefonotextBox";
+            this.TelefonotextBox.Size = new System.Drawing.Size(80, 20);
+            this.TelefonotextBox.TabIndex = 40;
+            // 
+            // CelulartextBox
+            // 
+            this.CelulartextBox.Location = new System.Drawing.Point(79, 208);
+            this.CelulartextBox.Mask = "(999)000-0000";
+            this.CelulartextBox.Name = "CelulartextBox";
+            this.CelulartextBox.Size = new System.Drawing.Size(80, 20);
+            this.CelulartextBox.TabIndex = 41;
+            // 
             // rClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::FerreteriaSystem.Properties.Resources.clientes;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(244, 317);
+            this.ClientSize = new System.Drawing.Size(244, 367);
+            this.Controls.Add(this.CelulartextBox);
+            this.Controls.Add(this.TelefonotextBox);
+            this.Controls.Add(this.DeudatextBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
             this.Controls.Add(this.Nuevobutton);
             this.Controls.Add(this.Buscarbutton);
-            this.Controls.Add(this.CelulartextBox);
-            this.Controls.Add(this.TelefonotextBox);
             this.Controls.Add(this.DirecciontextBox);
             this.Controls.Add(this.EmailtextBox);
             this.Controls.Add(this.NombrestextBox);
@@ -271,12 +294,14 @@
         private System.Windows.Forms.TextBox NombrestextBox;
         private System.Windows.Forms.TextBox EmailtextBox;
         private System.Windows.Forms.TextBox DirecciontextBox;
-        private System.Windows.Forms.TextBox TelefonotextBox;
-        private System.Windows.Forms.TextBox CelulartextBox;
         private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.Button Nuevobutton;
         private System.Windows.Forms.Button Eliminarbutton;
         private System.Windows.Forms.Button Guardarbutton;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.TextBox DeudatextBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.MaskedTextBox CelulartextBox;
+        private System.Windows.Forms.MaskedTextBox TelefonotextBox;
     }
 }

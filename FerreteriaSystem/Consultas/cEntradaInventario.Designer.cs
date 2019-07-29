@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.Imprimirbutton = new System.Windows.Forms.Button();
-            this.Quitarbutton = new System.Windows.Forms.Button();
             this.ConsultadataGridView = new System.Windows.Forms.DataGridView();
             this.CriteriotextBox = new System.Windows.Forms.TextBox();
             this.FiltrocomboBox = new System.Windows.Forms.ComboBox();
@@ -54,18 +53,6 @@
             this.Imprimirbutton.Text = "Imprimir";
             this.Imprimirbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Imprimirbutton.UseVisualStyleBackColor = true;
-            // 
-            // Quitarbutton
-            // 
-            this.Quitarbutton.Image = global::FerreteriaSystem.Properties.Resources.Close_icon;
-            this.Quitarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Quitarbutton.Location = new System.Drawing.Point(14, 305);
-            this.Quitarbutton.Name = "Quitarbutton";
-            this.Quitarbutton.Size = new System.Drawing.Size(116, 26);
-            this.Quitarbutton.TabIndex = 52;
-            this.Quitarbutton.Text = "Quitar";
-            this.Quitarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Quitarbutton.UseVisualStyleBackColor = true;
             // 
             // ConsultadataGridView
             // 
@@ -179,7 +166,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 338);
             this.Controls.Add(this.Imprimirbutton);
-            this.Controls.Add(this.Quitarbutton);
             this.Controls.Add(this.ConsultadataGridView);
             this.Controls.Add(this.CriteriotextBox);
             this.Controls.Add(this.FiltrocomboBox);
@@ -201,7 +187,6 @@
         #endregion
 
         private System.Windows.Forms.Button Imprimirbutton;
-        private System.Windows.Forms.Button Quitarbutton;
         private System.Windows.Forms.DataGridView ConsultadataGridView;
         private System.Windows.Forms.TextBox CriteriotextBox;
         private System.Windows.Forms.ComboBox FiltrocomboBox;

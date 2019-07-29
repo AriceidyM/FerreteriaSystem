@@ -25,7 +25,7 @@ namespace FerreteriaSystem.Registros
             Productos productos = new Productos();
             productos.ProductoId = Convert.ToInt32(ProductoIdnumericUpDown.Value);
             productos.Descripcion = DescripciontextBox.Text;
-            productos.Existencia = Convert.ToInt32(ExistenciatextBox.Text.ToString());
+            productos.Existencia = 0;
             productos.Precio = PrecionumericUpDown.Value;
             productos.Fecha = DateTime.Now;
 
@@ -35,7 +35,7 @@ namespace FerreteriaSystem.Registros
         {
             ProductoIdnumericUpDown.Value = productos.ProductoId;
             DescripciontextBox.Text = productos.Descripcion;
-            ExistenciatextBox.Text = Convert.ToString(productos.Existencia);
+            ExistenciatextBox.Text = productos.Existencia.ToString();
             PrecionumericUpDown.Value = productos.Precio;
             FechadateTimePicker.Value = productos.Fecha;
         }

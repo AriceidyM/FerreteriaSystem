@@ -9,36 +9,41 @@ namespace Entidades
 {
    public class VentasDetalle
     {
-        public int ID { get; set; }
-        public int  VentasID { get; set; }
+        public int Id { get; set; }
+        public int  VentaId { get; set; }
         public int ClienteId { get; set; }
         public int ProductoId { get; set; }
-
-        public int precio { get; set; }
-        public int cantidad { get; set; }
-
-        public int importe { get; set; }
+        public string Descripcion { get; set; }
+        public int Precio { get; set; }
+        public int Cantidad { get; set; }
+        public int Importe { get; set; }
 
         [ForeignKey("ProductoId")]
-        public virtual Productos Productos { get; set; }
+        public virtual Productos Producto { get; set; }
+        [ForeignKey("VentaId")]
+        public virtual Ventas Venta { get; set; }
 
         public VentasDetalle()
         {
-            ID = 0;
-            VentasID = 0;
+            Id = 0;
+            VentaId = 0;
+            ClienteId = 0;
+            ProductoId = 0;
+            Descripcion = string.Empty;
+            Precio = 0;
+            Cantidad = 0;
+            Importe = 0;
         }
 
-        public VentasDetalle(int iD, int ventasID, int clienteId, int productoId, int precio, int cantidad, int importe)
+        public VentasDetalle(int id, int ventaId, int productoId, string descripcion,  int precio, int cantidad, int importe)
         {
-            this.ID = iD;
-            this.VentasID = ventasID;
-            this.ClienteId = clienteId;
+            this.Id = id;
+            this.VentaId = ventaId;
             this.ProductoId = productoId;
-            this.precio = precio;
-            this.cantidad = cantidad;
-            this.importe = importe;
+            Descripcion = descripcion;
+            this.Precio = precio;
+            this.Cantidad = cantidad;
+            this.Importe = importe;
         }
-    }
-
-    
+    }    
 }

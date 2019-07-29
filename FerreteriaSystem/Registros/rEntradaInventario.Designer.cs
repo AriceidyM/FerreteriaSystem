@@ -37,12 +37,12 @@
             this.FechadateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.EntradaInventarioIdnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.CantidadnumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.ProductotextBox = new System.Windows.Forms.TextBox();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.Eliminarbutton = new System.Windows.Forms.Button();
             this.Guardarbutton = new System.Windows.Forms.Button();
             this.Nuevobutton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ProductocomboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.EntradaInventarioIdnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CantidadnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -90,7 +90,7 @@
             this.FechadateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.FechadateTimePicker.Location = new System.Drawing.Point(81, 127);
             this.FechadateTimePicker.Name = "FechadateTimePicker";
-            this.FechadateTimePicker.Size = new System.Drawing.Size(152, 20);
+            this.FechadateTimePicker.Size = new System.Drawing.Size(77, 20);
             this.FechadateTimePicker.TabIndex = 4;
             // 
             // EntradaInventarioIdnumericUpDown
@@ -104,15 +104,8 @@
             // 
             this.CantidadnumericUpDown.Location = new System.Drawing.Point(81, 91);
             this.CantidadnumericUpDown.Name = "CantidadnumericUpDown";
-            this.CantidadnumericUpDown.Size = new System.Drawing.Size(152, 20);
+            this.CantidadnumericUpDown.Size = new System.Drawing.Size(77, 20);
             this.CantidadnumericUpDown.TabIndex = 6;
-            // 
-            // ProductotextBox
-            // 
-            this.ProductotextBox.Location = new System.Drawing.Point(81, 63);
-            this.ProductotextBox.Name = "ProductotextBox";
-            this.ProductotextBox.Size = new System.Drawing.Size(152, 20);
-            this.ProductotextBox.TabIndex = 7;
             // 
             // Buscarbutton
             // 
@@ -170,6 +163,15 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // ProductocomboBox
+            // 
+            this.ProductocomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ProductocomboBox.FormattingEnabled = true;
+            this.ProductocomboBox.Location = new System.Drawing.Point(81, 54);
+            this.ProductocomboBox.Name = "ProductocomboBox";
+            this.ProductocomboBox.Size = new System.Drawing.Size(121, 21);
+            this.ProductocomboBox.TabIndex = 41;
+            // 
             // rEntradaInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,11 +179,11 @@
             this.BackgroundImage = global::FerreteriaSystem.Properties.Resources.inventario;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(240, 215);
+            this.Controls.Add(this.ProductocomboBox);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
             this.Controls.Add(this.Nuevobutton);
             this.Controls.Add(this.Buscarbutton);
-            this.Controls.Add(this.ProductotextBox);
             this.Controls.Add(this.CantidadnumericUpDown);
             this.Controls.Add(this.EntradaInventarioIdnumericUpDown);
             this.Controls.Add(this.FechadateTimePicker);
@@ -209,11 +211,11 @@
         private System.Windows.Forms.DateTimePicker FechadateTimePicker;
         private System.Windows.Forms.NumericUpDown EntradaInventarioIdnumericUpDown;
         private System.Windows.Forms.NumericUpDown CantidadnumericUpDown;
-        private System.Windows.Forms.TextBox ProductotextBox;
         private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.Button Eliminarbutton;
         private System.Windows.Forms.Button Guardarbutton;
         private System.Windows.Forms.Button Nuevobutton;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ComboBox ProductocomboBox;
     }
 }

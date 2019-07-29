@@ -12,18 +12,18 @@ using System.Windows.Forms;
 
 namespace FerreteriaSystem.Consultas
 {
-    public partial class cEntradaInventario : Form
+    public partial class cVentas : Form
     {
-        public cEntradaInventario()
+        public cVentas()
         {
             InitializeComponent();
         }
 
         private void Consultarbutton_Click(object sender, EventArgs e)
         {
-            Repositorio<EntradaInventario> dbe = new Repositorio<EntradaInventario>();
-            EntradaInventario inventario = new EntradaInventario();
-            var listado = new List<EntradaInventario>();
+            Repositorio<Ventas> dbe = new Repositorio<Ventas>();
+            Ventas usuarios = new Ventas();
+            var listado = new List<Ventas>();
 
             if (CriteriotextBox.Text.Trim().Length > 0)
             {
@@ -33,15 +33,10 @@ namespace FerreteriaSystem.Consultas
                         listado = dbe.GetList(p => true);
                         break;
 
-                    case "Id":
+                    case "ClienteId":
                         int id = Convert.ToInt32(CriteriotextBox.Text);
-                        listado = dbe.GetList(p => p.EntradaInventarioId == id);
+                        listado = dbe.GetList(p => p.ClienteId == id);
                         break;
-
-                    case "ProductoId":
-                        listado = dbe.GetList(p => p.ProductoId.Equals(CriteriotextBox.Text));
-                        break;
-
                     default:
                         break;
                 }
@@ -54,11 +49,6 @@ namespace FerreteriaSystem.Consultas
 
             ConsultadataGridView.DataSource = null;
             ConsultadataGridView.DataSource = listado;
-        }
-
-        private void Quitarbutton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

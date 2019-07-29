@@ -28,7 +28,7 @@ namespace FerreteriaSystem.Registros
             clientes.Telefono = TelefonotextBox.Text;
             clientes.Celular = CelulartextBox.Text;
             clientes.Fecha = DateTime.Now;
-
+            clientes.Deuda = 0;
             return clientes;
         }
         private void LlenaCampo(Clientes clientes)
@@ -40,6 +40,7 @@ namespace FerreteriaSystem.Registros
             TelefonotextBox.Text = clientes.Telefono;
             CelulartextBox.Text = clientes.Celular;
             FechadateTimePicker.Value = clientes.Fecha;
+            DeudatextBox.Text = clientes.Deuda.ToString();
         }
 
         public bool Validar()
@@ -89,6 +90,7 @@ namespace FerreteriaSystem.Registros
             TelefonotextBox.Text = string.Empty;
             CelulartextBox.Text = string.Empty;
             FechadateTimePicker.Value = DateTime.Now;
+            DeudatextBox.Clear();
             errorProvider.Clear();
         }
         private bool ExisteEnLaBaseDeDatos()

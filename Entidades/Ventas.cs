@@ -10,10 +10,10 @@ namespace Entidades
     public class Ventas
     {
         [Key]
-        public int VentaID { get; set; }
+        public int VentaId { get; set; }
         public DateTime Fecha { get; set; }
+        public string TipoVenta { get; set; }
         public int ClienteId { get; set; }
-        public int ProductoId { get; set; }
         public int SubTotal { get; set; }
         public int ITBIS { get; set; }
         public int Total { get; set; }
@@ -21,20 +21,19 @@ namespace Entidades
 
         public Ventas()
         {
-            this.Detalle = new List<VentasDetalle>();
-            VentaID = 0;
+            VentaId = 0;
             Fecha = DateTime.Now;
+            TipoVenta = string.Empty;
             ClienteId = 0;
-            ProductoId = 0;
-           
+            SubTotal = 0;
+            ITBIS = 0;
+            Total = 0;
+            this.Detalle = new List<VentasDetalle>();
+        }
 
-          
-
-    }
-
-       public void AgregarDetalle(int ID, int VentasID, int ClienteId, int ProductoId, int Precio, int Cantidad,int importe)
+       public void AgregarDetalle(int ID, int VentaId, int ProductoId, string Descripcion, int Precio, int Cantidad,int Importe)
         {
-            this.Detalle.Add(new VentasDetalle(ID, VentasID, ClienteId, ProductoId,Precio,Cantidad,importe));
+            this.Detalle.Add(new VentasDetalle(ID, VentaId, ProductoId, Descripcion, Precio, Cantidad, Importe));
         }
 
     }

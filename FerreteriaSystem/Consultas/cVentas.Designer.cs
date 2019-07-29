@@ -1,6 +1,6 @@
 ﻿namespace FerreteriaSystem.Consultas
 {
-    partial class cClientes
+    partial class cVentas
     {
         /// <summary>
         /// Required designer variable.
@@ -52,7 +52,6 @@
             this.ConsultadataGridView.RowTemplate.Height = 24;
             this.ConsultadataGridView.Size = new System.Drawing.Size(511, 245);
             this.ConsultadataGridView.TabIndex = 39;
-            this.ConsultadataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConsultadataGridView_CellContentClick);
             // 
             // CriteriotextBox
             // 
@@ -61,7 +60,6 @@
             this.CriteriotextBox.Name = "CriteriotextBox";
             this.CriteriotextBox.Size = new System.Drawing.Size(137, 20);
             this.CriteriotextBox.TabIndex = 38;
-            this.CriteriotextBox.TextChanged += new System.EventHandler(this.CriteriotextBox_TextChanged);
             // 
             // FiltrocomboBox
             // 
@@ -69,17 +67,13 @@
             this.FiltrocomboBox.Items.AddRange(new object[] {
             "Todo",
             "Id",
-            "Nombres",
-            "Email",
-            "Direccion",
-            "Telefono",
-            "Celular"});
+            "Nombre",
+            "Usuario"});
             this.FiltrocomboBox.Location = new System.Drawing.Point(191, 28);
             this.FiltrocomboBox.Margin = new System.Windows.Forms.Padding(2);
             this.FiltrocomboBox.Name = "FiltrocomboBox";
             this.FiltrocomboBox.Size = new System.Drawing.Size(92, 21);
             this.FiltrocomboBox.TabIndex = 37;
-            this.FiltrocomboBox.SelectedIndexChanged += new System.EventHandler(this.FiltrocomboBox_SelectedIndexChanged);
             // 
             // HastadateTimePicker
             // 
@@ -90,7 +84,6 @@
             this.HastadateTimePicker.Name = "HastadateTimePicker";
             this.HastadateTimePicker.Size = new System.Drawing.Size(82, 20);
             this.HastadateTimePicker.TabIndex = 36;
-            this.HastadateTimePicker.ValueChanged += new System.EventHandler(this.HastadateTimePicker_ValueChanged);
             // 
             // DesdedateTimePicker
             // 
@@ -101,7 +94,6 @@
             this.DesdedateTimePicker.Name = "DesdedateTimePicker";
             this.DesdedateTimePicker.Size = new System.Drawing.Size(77, 20);
             this.DesdedateTimePicker.TabIndex = 35;
-            this.DesdedateTimePicker.ValueChanged += new System.EventHandler(this.DesdedateTimePicker_ValueChanged);
             // 
             // label4
             // 
@@ -112,7 +104,6 @@
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 33;
             this.label4.Text = "Criterio";
-            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // label3
             // 
@@ -123,7 +114,6 @@
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 32;
             this.label3.Text = "Filtro";
-            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // label2
             // 
@@ -134,7 +124,6 @@
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 31;
             this.label2.Text = "Hasta";
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // label1
             // 
@@ -145,7 +134,6 @@
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 30;
             this.label1.Text = "Desde";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // Consultarbutton
             // 
@@ -165,20 +153,19 @@
             // 
             this.Imprimirbutton.Image = global::FerreteriaSystem.Properties.Resources.Print_icon;
             this.Imprimirbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Imprimirbutton.Location = new System.Drawing.Point(452, 305);
+            this.Imprimirbutton.Location = new System.Drawing.Point(452, 307);
             this.Imprimirbutton.Name = "Imprimirbutton";
             this.Imprimirbutton.Size = new System.Drawing.Size(73, 26);
-            this.Imprimirbutton.TabIndex = 41;
+            this.Imprimirbutton.TabIndex = 42;
             this.Imprimirbutton.Text = "Imprimir";
             this.Imprimirbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Imprimirbutton.UseVisualStyleBackColor = true;
-            this.Imprimirbutton.Click += new System.EventHandler(this.Imprimirbutton_Click);
             // 
-            // cClientes
+            // cVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 336);
+            this.ClientSize = new System.Drawing.Size(532, 334);
             this.Controls.Add(this.Imprimirbutton);
             this.Controls.Add(this.ConsultadataGridView);
             this.Controls.Add(this.CriteriotextBox);
@@ -190,8 +177,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "cClientes";
-            this.Text = "cClientes";
+            this.Name = "cVentas";
+            this.Text = "cVentas";
             ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
