@@ -55,5 +55,47 @@ namespace FerreteriaSystem
             rEntradaInventario inv = new rEntradaInventario();
             inv.Show();
         }
+
+        private void RepClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            repoClientes cli = new repoClientes();
+            cli.Show();
+        }
+
+        private void RepProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            repoProductos pro = new repoProductos();
+            pro.Show();
+        }
+
+        private void RepEntradaInventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            repoEntradaInventario inv = new repoEntradaInventario();
+            inv.Show();
+        }
+
+        private void RVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rVentas ven = new rVentas();
+            ven.Show();
+        }
+
+        private void CClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cClientes cli = new cClientes();
+            cli.Show();
+        }
+
+        private void CProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cProductos pro = new cProductos();
+            pro.Show();
+        }
+
+        private void CEntradaInventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cEntradaInventario inv = new cEntradaInventario();
+            inv.Show();
+        }
     }
 }

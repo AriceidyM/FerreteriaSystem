@@ -49,6 +49,8 @@
             this.Eliminarbutton = new System.Windows.Forms.Button();
             this.Guardarbutton = new System.Windows.Forms.Button();
             this.Nuevobutton = new System.Windows.Forms.Button();
+            this.ConfirmaciontextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.UsuarioIDnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -57,9 +59,9 @@
             // 
             this.FechaIngresodateTimePicker.CustomFormat = "dd/MM/yyyy";
             this.FechaIngresodateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechaIngresodateTimePicker.Location = new System.Drawing.Point(109, 222);
+            this.FechaIngresodateTimePicker.Location = new System.Drawing.Point(109, 250);
             this.FechaIngresodateTimePicker.Name = "FechaIngresodateTimePicker";
-            this.FechaIngresodateTimePicker.Size = new System.Drawing.Size(100, 20);
+            this.FechaIngresodateTimePicker.Size = new System.Drawing.Size(149, 20);
             this.FechaIngresodateTimePicker.TabIndex = 29;
             // 
             // UsuarioIDnumericUpDown
@@ -73,41 +75,43 @@
             // 
             this.ClavetextBox.Location = new System.Drawing.Point(109, 192);
             this.ClavetextBox.Name = "ClavetextBox";
-            this.ClavetextBox.Size = new System.Drawing.Size(100, 20);
+            this.ClavetextBox.PasswordChar = '*';
+            this.ClavetextBox.Size = new System.Drawing.Size(149, 20);
             this.ClavetextBox.TabIndex = 27;
+            this.ClavetextBox.TextChanged += new System.EventHandler(this.ClavetextBox_TextChanged);
             // 
             // UsuariotextBox
             // 
             this.UsuariotextBox.Location = new System.Drawing.Point(109, 161);
             this.UsuariotextBox.Name = "UsuariotextBox";
-            this.UsuariotextBox.Size = new System.Drawing.Size(100, 20);
+            this.UsuariotextBox.Size = new System.Drawing.Size(149, 20);
             this.UsuariotextBox.TabIndex = 26;
             // 
             // NivelUsuariotextBox
             // 
             this.NivelUsuariotextBox.Location = new System.Drawing.Point(109, 126);
             this.NivelUsuariotextBox.Name = "NivelUsuariotextBox";
-            this.NivelUsuariotextBox.Size = new System.Drawing.Size(100, 20);
+            this.NivelUsuariotextBox.Size = new System.Drawing.Size(149, 20);
             this.NivelUsuariotextBox.TabIndex = 25;
             // 
             // EmailstextBox
             // 
             this.EmailstextBox.Location = new System.Drawing.Point(109, 92);
             this.EmailstextBox.Name = "EmailstextBox";
-            this.EmailstextBox.Size = new System.Drawing.Size(100, 20);
+            this.EmailstextBox.Size = new System.Drawing.Size(149, 20);
             this.EmailstextBox.TabIndex = 24;
             // 
             // NombrestextBox
             // 
             this.NombrestextBox.Location = new System.Drawing.Point(109, 53);
             this.NombrestextBox.Name = "NombrestextBox";
-            this.NombrestextBox.Size = new System.Drawing.Size(100, 20);
+            this.NombrestextBox.Size = new System.Drawing.Size(149, 20);
             this.NombrestextBox.TabIndex = 23;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 222);
+            this.label7.Location = new System.Drawing.Point(14, 250);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 13);
             this.label7.TabIndex = 22;
@@ -175,7 +179,7 @@
             // 
             this.Buscarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Buscarbutton.Image")));
             this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Buscarbutton.Location = new System.Drawing.Point(198, 6);
+            this.Buscarbutton.Location = new System.Drawing.Point(183, 6);
             this.Buscarbutton.Name = "Buscarbutton";
             this.Buscarbutton.Size = new System.Drawing.Size(75, 34);
             this.Buscarbutton.TabIndex = 33;
@@ -188,7 +192,7 @@
             // 
             this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Eliminarbutton.Location = new System.Drawing.Point(180, 260);
+            this.Eliminarbutton.Location = new System.Drawing.Point(180, 283);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(78, 34);
             this.Eliminarbutton.TabIndex = 32;
@@ -201,7 +205,7 @@
             // 
             this.Guardarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Guardarbutton.Image")));
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Guardarbutton.Location = new System.Drawing.Point(97, 260);
+            this.Guardarbutton.Location = new System.Drawing.Point(97, 283);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(77, 34);
             this.Guardarbutton.TabIndex = 31;
@@ -214,7 +218,7 @@
             // 
             this.Nuevobutton.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton.Image")));
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Nuevobutton.Location = new System.Drawing.Point(12, 260);
+            this.Nuevobutton.Location = new System.Drawing.Point(12, 283);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(79, 34);
             this.Nuevobutton.TabIndex = 30;
@@ -223,11 +227,32 @@
             this.Nuevobutton.UseVisualStyleBackColor = true;
             this.Nuevobutton.Click += new System.EventHandler(this.Nuevobutton_Click);
             // 
+            // ConfirmaciontextBox
+            // 
+            this.ConfirmaciontextBox.Location = new System.Drawing.Point(109, 224);
+            this.ConfirmaciontextBox.Name = "ConfirmaciontextBox";
+            this.ConfirmaciontextBox.PasswordChar = '*';
+            this.ConfirmaciontextBox.Size = new System.Drawing.Size(149, 20);
+            this.ConfirmaciontextBox.TabIndex = 35;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 224);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Confimacion";
+            // 
             // rUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 312);
+            this.BackgroundImage = global::FerreteriaSystem.Properties.Resources.usuario;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(263, 322);
+            this.Controls.Add(this.ConfirmaciontextBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
@@ -246,6 +271,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Name = "rUsuarios";
             this.Text = "rUsuarios";
             ((System.ComponentModel.ISupportInitialize)(this.UsuarioIDnumericUpDown)).EndInit();
@@ -276,5 +302,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.TextBox ConfirmaciontextBox;
+        private System.Windows.Forms.Label label8;
     }
 }

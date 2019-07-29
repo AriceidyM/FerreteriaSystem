@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>FerreteriaSystem</RootNamespace>
     <AssemblyName>FerreteriaSystem</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,6 +38,9 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="eCryptography, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eramake.eCryptography.1.1.6\lib\net45\eCryptography.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -60,11 +64,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas\cClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cClientes.Designer.cs">
+      <DependentUpon>cClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cEntradaInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cEntradaInventario.Designer.cs">
+      <DependentUpon>cEntradaInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cProductos.Designer.cs">
+      <DependentUpon>cProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\cUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Consultas\cUsuarios.Designer.cs">
       <DependentUpon>cUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -98,20 +126,74 @@
     <Compile Include="Registros\rUsuarios.Designer.cs">
       <DependentUpon>rUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registros\rVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rVentas.Designer.cs">
+      <DependentUpon>rVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\repClientes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>repClientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\repEntradaInventario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>repEntradaInventario.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\repoClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\repoClientes.Designer.cs">
+      <DependentUpon>repoClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\repoEntradaInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\repoEntradaInventario.Designer.cs">
+      <DependentUpon>repoEntradaInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\repoProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\repoProductos.Designer.cs">
+      <DependentUpon>repoProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteUsuarios.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteUsuarios.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\repoUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\repoUsuarios.Designer.cs">
       <DependentUpon>repoUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\repUsuarios.cs">
+    <Compile Include="Reportes\repProductos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>repUsuarios.rpt</DependentUpon>
+      <DependentUpon>repProductos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Consultas\cClientes.resx">
+      <DependentUpon>cClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cEntradaInventario.resx">
+      <DependentUpon>cEntradaInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cProductos.resx">
+      <DependentUpon>cProductos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\cUsuarios.resx">
       <DependentUpon>cUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -138,12 +220,36 @@
     <EmbeddedResource Include="Registros\rUsuarios.resx">
       <DependentUpon>rUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rVentas.resx">
+      <DependentUpon>rVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\repClientes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>repClientes.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\repEntradaInventario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>repEntradaInventario.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\repoClientes.resx">
+      <DependentUpon>repoClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\repoEntradaInventario.resx">
+      <DependentUpon>repoEntradaInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\repoProductos.resx">
+      <DependentUpon>repoProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteUsuarios.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteUsuarios.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\repoUsuarios.resx">
       <DependentUpon>repoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\repUsuarios.rpt">
+    <EmbeddedResource Include="Reportes\repProductos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>repUsuarios.cs</LastGenOutput>
+      <LastGenOutput>repProductos.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -176,6 +282,10 @@
       <Project>{e253ccce-13db-44ff-9c30-0dc7052c844b}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{B909B4F2-A844-4D84-9B83-A3796D81D379}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{fe2e2687-7eac-4b06-812a-0fbfac7bb801}</Project>
       <Name>Entidades</Name>
@@ -189,6 +299,39 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new-file-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inv.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inventario.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\productos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ventas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientes.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

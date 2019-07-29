@@ -122,56 +122,56 @@
             this.FechadateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.FechadateTimePicker.Location = new System.Drawing.Point(79, 245);
             this.FechadateTimePicker.Name = "FechadateTimePicker";
-            this.FechadateTimePicker.Size = new System.Drawing.Size(104, 20);
+            this.FechadateTimePicker.Size = new System.Drawing.Size(161, 20);
             this.FechadateTimePicker.TabIndex = 7;
             // 
             // ClienteIdnumericUpDown
             // 
             this.ClienteIdnumericUpDown.Location = new System.Drawing.Point(79, 27);
             this.ClienteIdnumericUpDown.Name = "ClienteIdnumericUpDown";
-            this.ClienteIdnumericUpDown.Size = new System.Drawing.Size(61, 20);
+            this.ClienteIdnumericUpDown.Size = new System.Drawing.Size(80, 20);
             this.ClienteIdnumericUpDown.TabIndex = 8;
             // 
             // NombrestextBox
             // 
             this.NombrestextBox.Location = new System.Drawing.Point(79, 65);
             this.NombrestextBox.Name = "NombrestextBox";
-            this.NombrestextBox.Size = new System.Drawing.Size(104, 20);
+            this.NombrestextBox.Size = new System.Drawing.Size(161, 20);
             this.NombrestextBox.TabIndex = 9;
             // 
             // EmailtextBox
             // 
             this.EmailtextBox.Location = new System.Drawing.Point(79, 100);
             this.EmailtextBox.Name = "EmailtextBox";
-            this.EmailtextBox.Size = new System.Drawing.Size(104, 20);
+            this.EmailtextBox.Size = new System.Drawing.Size(161, 20);
             this.EmailtextBox.TabIndex = 10;
             // 
             // DirecciontextBox
             // 
             this.DirecciontextBox.Location = new System.Drawing.Point(79, 136);
             this.DirecciontextBox.Name = "DirecciontextBox";
-            this.DirecciontextBox.Size = new System.Drawing.Size(104, 20);
+            this.DirecciontextBox.Size = new System.Drawing.Size(161, 20);
             this.DirecciontextBox.TabIndex = 11;
             // 
             // TelefonotextBox
             // 
             this.TelefonotextBox.Location = new System.Drawing.Point(79, 174);
             this.TelefonotextBox.Name = "TelefonotextBox";
-            this.TelefonotextBox.Size = new System.Drawing.Size(104, 20);
+            this.TelefonotextBox.Size = new System.Drawing.Size(161, 20);
             this.TelefonotextBox.TabIndex = 12;
             // 
             // CelulartextBox
             // 
             this.CelulartextBox.Location = new System.Drawing.Point(79, 211);
             this.CelulartextBox.Name = "CelulartextBox";
-            this.CelulartextBox.Size = new System.Drawing.Size(104, 20);
+            this.CelulartextBox.Size = new System.Drawing.Size(161, 20);
             this.CelulartextBox.TabIndex = 13;
             // 
             // Buscarbutton
             // 
             this.Buscarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Buscarbutton.Image")));
             this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Buscarbutton.Location = new System.Drawing.Point(180, 13);
+            this.Buscarbutton.Location = new System.Drawing.Point(165, 12);
             this.Buscarbutton.Name = "Buscarbutton";
             this.Buscarbutton.Size = new System.Drawing.Size(75, 34);
             this.Buscarbutton.TabIndex = 34;
@@ -184,9 +184,9 @@
             // 
             this.Nuevobutton.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton.Image")));
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Nuevobutton.Location = new System.Drawing.Point(7, 297);
+            this.Nuevobutton.Location = new System.Drawing.Point(10, 274);
             this.Nuevobutton.Name = "Nuevobutton";
-            this.Nuevobutton.Size = new System.Drawing.Size(79, 34);
+            this.Nuevobutton.Size = new System.Drawing.Size(71, 34);
             this.Nuevobutton.TabIndex = 35;
             this.Nuevobutton.Text = "Nuevo";
             this.Nuevobutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -197,9 +197,9 @@
             // 
             this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Eliminarbutton.Location = new System.Drawing.Point(175, 297);
+            this.Eliminarbutton.Location = new System.Drawing.Point(167, 274);
             this.Eliminarbutton.Name = "Eliminarbutton";
-            this.Eliminarbutton.Size = new System.Drawing.Size(78, 34);
+            this.Eliminarbutton.Size = new System.Drawing.Size(73, 34);
             this.Eliminarbutton.TabIndex = 37;
             this.Eliminarbutton.Text = "Eliminar";
             this.Eliminarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -210,9 +210,9 @@
             // 
             this.Guardarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Guardarbutton.Image")));
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Guardarbutton.Location = new System.Drawing.Point(92, 297);
+            this.Guardarbutton.Location = new System.Drawing.Point(87, 274);
             this.Guardarbutton.Name = "Guardarbutton";
-            this.Guardarbutton.Size = new System.Drawing.Size(77, 34);
+            this.Guardarbutton.Size = new System.Drawing.Size(74, 34);
             this.Guardarbutton.TabIndex = 36;
             this.Guardarbutton.Text = "Guardar";
             this.Guardarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -227,7 +227,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 340);
+            this.BackgroundImage = global::FerreteriaSystem.Properties.Resources.clientes;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(244, 317);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
             this.Controls.Add(this.Nuevobutton);

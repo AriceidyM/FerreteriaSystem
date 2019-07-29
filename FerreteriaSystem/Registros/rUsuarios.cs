@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static BLL.BLL;
+using BLL;
 
 namespace FerreteriaSystem.Registros
 {
@@ -44,34 +44,44 @@ namespace FerreteriaSystem.Registros
         }
 
             public bool Validar()
-        {
+            {
+
             bool paso = true;
-            paso = false;
             errorProvider.Clear();
 
-            if (NombrestextBox.Text==string.Empty)
+            if (NombrestextBox.Text == String.Empty)
             {
-                errorProvider.SetError(NombrestextBox, "Favor LLenar");
+                errorProvider.SetError(NombrestextBox, "El campo Nombre no puede estar vacio");
+                NombrestextBox.Focus();
                 paso = false;
             }
-            if (EmailstextBox.Text == string.Empty)
+
+            if (EmailstextBox.Text == String.Empty)
             {
-                errorProvider.SetError(EmailstextBox, "Favor LLenar");
+                errorProvider.SetError(EmailstextBox, "El campo Email no puede estar vacio");
+                EmailstextBox.Focus();
                 paso = false;
-            }
+            } 
+            
             if (NivelUsuariotextBox.Text == string.Empty)
             {
-                errorProvider.SetError(NivelUsuariotextBox, "Favor Llenar");
+                errorProvider.SetError(NivelUsuariotextBox, "Favor Llenar, el campo no puede estar vacio");
                 paso = false;
             }
             if (UsuariotextBox.Text == string.Empty)
             {
-                errorProvider.SetError(UsuariotextBox, "Favor Llenar");
+                errorProvider.SetError(UsuariotextBox, "Favor Llenar, el campo no puede estar vacio");
                 paso = false;
             }
             if (ClavetextBox.Text == string.Empty)
             {
-                errorProvider.SetError(ClavetextBox, "Favor Llenar");
+                errorProvider.SetError(ClavetextBox, "Favor Llenar, el campo no puede estar vacio");
+                paso = false;
+            }
+
+            if (ConfirmaciontextBox.Text != ClavetextBox.Text)
+            {
+                errorProvider.SetError(ConfirmaciontextBox, "La contraseña no coincide");
                 paso = false;
             }
             return paso;
@@ -138,10 +148,15 @@ namespace FerreteriaSystem.Registros
 
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
+
+
             bool paso = false;
             Repositorio<Usuarios> dbe = new Repositorio<Usuarios>();
             Usuarios usuarios = new Usuarios();
 
+            if (!Validar())
+                return;
+       
             usuarios = LlenaClase();
 
 
@@ -153,17 +168,29 @@ namespace FerreteriaSystem.Registros
             {
                 if (!ExisteEnLaBaseDeDatos())
                 {
-                    MessageBox.Show("No se puede modificar un usuario que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se puede modificar un Usuario que no existe", "fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 paso = dbe.Modificar(usuarios);
             }
-
-            if (paso)
-                MessageBox.Show("Guardado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (!ExisteEnLaBaseDeDatos())
+            {
+                if (paso)
+                    MessageBox.Show("Guardado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else
-                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (paso)
+                    MessageBox.Show("Modificado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             Limpiar();
+        }
+
+        private void ClavetextBox_TextChanged(object sender, EventArgs e)
+        {
+            //txtEncrypt.Text = Eramake.eCryptography.Encrypt(txtValue.Text);
         }
     }
 }

@@ -53,9 +53,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "EntradaInventarioId";
+            this.label1.Text = "Id";
             // 
             // label2
             // 
@@ -88,37 +88,37 @@
             // 
             this.FechadateTimePicker.CustomFormat = "dd/MM/yyyy";
             this.FechadateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechadateTimePicker.Location = new System.Drawing.Point(119, 127);
+            this.FechadateTimePicker.Location = new System.Drawing.Point(81, 127);
             this.FechadateTimePicker.Name = "FechadateTimePicker";
-            this.FechadateTimePicker.Size = new System.Drawing.Size(111, 20);
+            this.FechadateTimePicker.Size = new System.Drawing.Size(152, 20);
             this.FechadateTimePicker.TabIndex = 4;
             // 
             // EntradaInventarioIdnumericUpDown
             // 
-            this.EntradaInventarioIdnumericUpDown.Location = new System.Drawing.Point(119, 27);
+            this.EntradaInventarioIdnumericUpDown.Location = new System.Drawing.Point(81, 27);
             this.EntradaInventarioIdnumericUpDown.Name = "EntradaInventarioIdnumericUpDown";
-            this.EntradaInventarioIdnumericUpDown.Size = new System.Drawing.Size(72, 20);
+            this.EntradaInventarioIdnumericUpDown.Size = new System.Drawing.Size(71, 20);
             this.EntradaInventarioIdnumericUpDown.TabIndex = 5;
             // 
             // CantidadnumericUpDown
             // 
-            this.CantidadnumericUpDown.Location = new System.Drawing.Point(119, 91);
+            this.CantidadnumericUpDown.Location = new System.Drawing.Point(81, 91);
             this.CantidadnumericUpDown.Name = "CantidadnumericUpDown";
-            this.CantidadnumericUpDown.Size = new System.Drawing.Size(111, 20);
+            this.CantidadnumericUpDown.Size = new System.Drawing.Size(152, 20);
             this.CantidadnumericUpDown.TabIndex = 6;
             // 
             // ProductotextBox
             // 
-            this.ProductotextBox.Location = new System.Drawing.Point(119, 63);
+            this.ProductotextBox.Location = new System.Drawing.Point(81, 63);
             this.ProductotextBox.Name = "ProductotextBox";
-            this.ProductotextBox.Size = new System.Drawing.Size(111, 20);
+            this.ProductotextBox.Size = new System.Drawing.Size(152, 20);
             this.ProductotextBox.TabIndex = 7;
             // 
             // Buscarbutton
             // 
             this.Buscarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Buscarbutton.Image")));
             this.Buscarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Buscarbutton.Location = new System.Drawing.Point(207, 6);
+            this.Buscarbutton.Location = new System.Drawing.Point(158, 6);
             this.Buscarbutton.Name = "Buscarbutton";
             this.Buscarbutton.Size = new System.Drawing.Size(75, 34);
             this.Buscarbutton.TabIndex = 37;
@@ -131,9 +131,9 @@
             // 
             this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Eliminarbutton.Location = new System.Drawing.Point(204, 170);
+            this.Eliminarbutton.Location = new System.Drawing.Point(164, 170);
             this.Eliminarbutton.Name = "Eliminarbutton";
-            this.Eliminarbutton.Size = new System.Drawing.Size(78, 34);
+            this.Eliminarbutton.Size = new System.Drawing.Size(69, 34);
             this.Eliminarbutton.TabIndex = 40;
             this.Eliminarbutton.Text = "Eliminar";
             this.Eliminarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -144,7 +144,7 @@
             // 
             this.Guardarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Guardarbutton.Image")));
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Guardarbutton.Location = new System.Drawing.Point(114, 170);
+            this.Guardarbutton.Location = new System.Drawing.Point(81, 170);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(77, 34);
             this.Guardarbutton.TabIndex = 39;
@@ -157,9 +157,9 @@
             // 
             this.Nuevobutton.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton.Image")));
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Nuevobutton.Location = new System.Drawing.Point(15, 170);
+            this.Nuevobutton.Location = new System.Drawing.Point(4, 170);
             this.Nuevobutton.Name = "Nuevobutton";
-            this.Nuevobutton.Size = new System.Drawing.Size(79, 34);
+            this.Nuevobutton.Size = new System.Drawing.Size(71, 34);
             this.Nuevobutton.TabIndex = 38;
             this.Nuevobutton.Text = "Nuevo";
             this.Nuevobutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -174,7 +174,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 224);
+            this.BackgroundImage = global::FerreteriaSystem.Properties.Resources.inventario;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(240, 215);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
             this.Controls.Add(this.Nuevobutton);
@@ -188,7 +190,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "rEntradaInventario";
-            this.Text = "rEntradaInventario";
+            this.Text = "RegistroEntradaInventario";
+            this.Load += new System.EventHandler(this.REntradaInventario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EntradaInventarioIdnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CantidadnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

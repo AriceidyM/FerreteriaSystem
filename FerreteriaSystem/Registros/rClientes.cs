@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using BLL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static BLL.BLL;
 
 namespace FerreteriaSystem.Registros
 {
@@ -45,34 +45,39 @@ namespace FerreteriaSystem.Registros
         public bool Validar()
         {
             bool paso = true;
-            paso = false;
             errorProvider.Clear();
 
-            if (NombrestextBox.Text == string.Empty)
+            if (string.IsNullOrWhiteSpace(NombrestextBox.Text))
             {
-                errorProvider.SetError(NombrestextBox, "Favor LLenar");
+                errorProvider.SetError(NombrestextBox, "Este campo no puede estar vacio");
                 paso = false;
             }
-            if (EmailtextBox.Text == string.Empty)
+            if (string.IsNullOrWhiteSpace(EmailtextBox.Text))
             {
-                errorProvider.SetError(EmailtextBox, "Favor LLenar");
+                errorProvider.SetError(EmailtextBox, "Este campo no puede estar vacio");
                 paso = false;
             }
-            if (DirecciontextBox.Text == string.Empty)
+            if (string.IsNullOrWhiteSpace(DirecciontextBox.Text))
             {
-                errorProvider.SetError(DirecciontextBox, "Favor Llenar");
+                errorProvider.SetError(DirecciontextBox, "Este campo no puede estar vacio");
                 paso = false;
             }
-            if (TelefonotextBox.Text == string.Empty)
+            if (string.IsNullOrWhiteSpace(TelefonotextBox.Text))
             {
-                errorProvider.SetError(TelefonotextBox, "Favor Llenar");
+                errorProvider.SetError(TelefonotextBox, "Este campo no puede estar vacio");
                 paso = false;
             }
-            if (CelulartextBox.Text == string.Empty)
+            if (string.IsNullOrWhiteSpace(CelulartextBox.Text))
             {
-                errorProvider.SetError(CelulartextBox, "Favor Llenar");
+                errorProvider.SetError(CelulartextBox, "Este campo no puede estar vacio");
                 paso = false;
             }
+            if (FechadateTimePicker.Value > DateTime.Now)
+            {
+                errorProvider.SetError(FechadateTimePicker, "La fecha no puede ser mayor que la de hoy");
+                paso = false;
+            }
+
             return paso;
         }
         private void Limpiar()
@@ -101,6 +106,8 @@ namespace FerreteriaSystem.Registros
 
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
+            if (!Validar())
+                return;
             bool paso = false;
             Repositorio<Clientes> dbe = new Repositorio<Clientes>();
             Clientes clientes = new Clientes();

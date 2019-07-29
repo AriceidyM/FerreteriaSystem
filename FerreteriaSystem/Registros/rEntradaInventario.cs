@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static BLL.BLL;
+using BLL;
 
 namespace FerreteriaSystem.Registros
 {
@@ -75,6 +75,8 @@ namespace FerreteriaSystem.Registros
 
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
+            if (!Validar())
+                return;
             bool paso = false;
             Repositorio<EntradaInventario> dbe = new Repositorio<EntradaInventario>();
             EntradaInventario inventario = new EntradaInventario();
@@ -138,6 +140,11 @@ namespace FerreteriaSystem.Registros
             }
             else
                 MessageBox.Show("Usuario no encontrado");
+        }
+
+        private void REntradaInventario_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

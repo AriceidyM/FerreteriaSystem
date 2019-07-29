@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Quitarbutton = new System.Windows.Forms.Button();
             this.Consultarbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +74,7 @@
             this.FiltrocomboBox.Name = "FiltrocomboBox";
             this.FiltrocomboBox.Size = new System.Drawing.Size(92, 21);
             this.FiltrocomboBox.TabIndex = 27;
+            this.FiltrocomboBox.SelectedIndexChanged += new System.EventHandler(this.FiltrocomboBox_SelectedIndexChanged);
             // 
             // HastadateTimePicker
             // 
@@ -134,6 +136,19 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Desde";
             // 
+            // Quitarbutton
+            // 
+            this.Quitarbutton.Image = global::FerreteriaSystem.Properties.Resources.Close_icon;
+            this.Quitarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Quitarbutton.Location = new System.Drawing.Point(14, 304);
+            this.Quitarbutton.Name = "Quitarbutton";
+            this.Quitarbutton.Size = new System.Drawing.Size(116, 26);
+            this.Quitarbutton.TabIndex = 30;
+            this.Quitarbutton.Text = "Quitar";
+            this.Quitarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Quitarbutton.UseVisualStyleBackColor = true;
+            this.Quitarbutton.Click += new System.EventHandler(this.Quitarbutton_Click);
+            // 
             // Consultarbutton
             // 
             this.Consultarbutton.Image = global::FerreteriaSystem.Properties.Resources.Search_icon;
@@ -153,6 +168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(536, 333);
+            this.Controls.Add(this.Quitarbutton);
             this.Controls.Add(this.ConsultadataGridView);
             this.Controls.Add(this.CriteriotextBox);
             this.Controls.Add(this.FiltrocomboBox);
@@ -165,6 +181,7 @@
             this.Controls.Add(this.label1);
             this.Name = "cUsuarios";
             this.Text = "cUsuarios";
+            this.Load += new System.EventHandler(this.CUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,5 +200,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Quitarbutton;
     }
 }

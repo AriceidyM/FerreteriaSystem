@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static BLL.BLL;
+using BLL;
 
 namespace FerreteriaSystem.Registros
 {
@@ -25,7 +25,7 @@ namespace FerreteriaSystem.Registros
             productos.ProductoId = Convert.ToInt32(ProductoIdnumericUpDown.Value);
             productos.Descripcion = DescripciontextBox.Text;
             productos.Existencia = ExistenciatextBox.Text;
-            productos.Precio = PreciotextBox.Text;
+            productos.Precio = Convert.ToInt32(PrecionumericUpDown.Value);
             productos.Fecha = DateTime.Now;
 
             return productos;
@@ -35,11 +35,11 @@ namespace FerreteriaSystem.Registros
             ProductoIdnumericUpDown.Value = productos.ProductoId;
             DescripciontextBox.Text = productos.Descripcion;
             ExistenciatextBox.Text = productos.Existencia;
-            PreciotextBox.Text = productos.Precio;
+            PrecionumericUpDown.Value = productos.Precio;
             FechadateTimePicker.Value = productos.Fecha;
         }
 
-        public bool Validar()
+        private bool Validar()
         {
             bool paso = true;
             paso = false;
@@ -55,11 +55,6 @@ namespace FerreteriaSystem.Registros
                 errorProvider.SetError(ExistenciatextBox, "Favor LLenar");
                 paso = false;
             }
-            if (PreciotextBox.Text == string.Empty)
-            {
-                errorProvider.SetError(PreciotextBox, "Favor Llenar");
-                paso = false;
-            }
             return paso;
         }
         private void Limpiar()
@@ -67,7 +62,7 @@ namespace FerreteriaSystem.Registros
             ProductoIdnumericUpDown.Value = 0;
             DescripciontextBox.Text = string.Empty;
             ExistenciatextBox.Text = string.Empty;
-            PreciotextBox.Text = string.Empty;
+            PrecionumericUpDown.Value = 0;
             FechadateTimePicker.Value = DateTime.Now;
             errorProvider.Clear();
         }
@@ -85,6 +80,8 @@ namespace FerreteriaSystem.Registros
 
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
+            if (!Validar())
+                return;
             bool paso = false;
             Repositorio<Productos> dbe = new Repositorio<Productos>();
             Productos productos = new Productos();

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static BLL.BLL;
+using BLL;
 
 namespace FerreteriaSystem.Consultas
 {
@@ -57,6 +57,21 @@ namespace FerreteriaSystem.Consultas
 
             ConsultadataGridView.DataSource = null;
             ConsultadataGridView.DataSource = listado;
+        }
+
+        private void FiltrocomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Quitarbutton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CUsuarios_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

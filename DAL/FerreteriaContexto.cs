@@ -14,6 +14,7 @@ namespace DAL
         public DbSet<Clientes> clientes { get; set; }
         public DbSet<Productos> productos { get; set; }
         public DbSet<EntradaInventario> inventario { get; set; }
+        public DbSet<Ventas> ventas { get; set; }
         public FerreteriaContexto() : base("ConStr")
         { }
     }
