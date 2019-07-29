@@ -24,6 +24,7 @@ namespace FerreteriaSystem.Registros
             ClientecomboBox.Text = null;
             LLenarProducto();
             ProductocomboBox.Text = null;
+
         }
 
         private int ToInt(object valor)
@@ -58,7 +59,7 @@ namespace FerreteriaSystem.Registros
         private bool Validar()
         {
             bool paso = true;
-            paso = false;
+           
             errorProvider.Clear();
 
             if (ClientecomboBox.Text == string.Empty)
@@ -79,46 +80,6 @@ namespace FerreteriaSystem.Registros
             return paso;
         }
 
-        /*public void CalcularItbis()
-         {
-             double itbis = 0;
-             foreach (var item in Detalle)
-             {
-                 itbis += item.Itbis;
-             }
-             ITBISnumericUpDown.Value = ITBIS
-         }
-
-         public void CalcularTotal()
-         {
-             double total = 0;
-             foreach (var item in Detalle)
-             {
-                 total += (item.Importe) + item.Itbis;
-             }
-             TotalTextBox.Text = total.ToString();
-         }
-
-         public void CalcularSubtotal()
-         {
-             double subtotal = 0;
-             foreach (var item in Detalle)
-             {
-                 subtotal += item.Importe;
-             }
-             SubTotalTextBox.Text = subtotal.ToString();
-         }*/
-
-        private void LlenaImporte()
-        {
-            Repositorio<Productos> repositorio = new Repositorio<Productos>();
-            decimal cantidad = 0;
-            decimal precio = 0;
-
-            cantidad = CantidadnumericUpDown.Value;
-            precio =PrecionumericUpDown.Value;
-            //ImportetextBox.Text = repositorio.Importe(cantidad, precio).ToString();
-        }
         private void LlenarPrecio()
         {
             Repositorio<Productos> repositorio = new Repositorio<Productos>();
@@ -194,8 +155,15 @@ namespace FerreteriaSystem.Registros
                 Convert.ToInt32(item.Cells["Precio"].Value),
                 Convert.ToInt32(item.Cells["Cantidad"].Value),
                 Convert.ToInt32(item.Cells["importe"].Value)
+
+
                 );
+
+                
             }
+
+
+
             Anadir();
             return ventas;
             
@@ -208,7 +176,6 @@ namespace FerreteriaSystem.Registros
         private void Button1_Click(object sender, EventArgs e)
         {
             List<VentasDetalle> detalle = new List<VentasDetalle>();
-
 
             if (VentasdataGridView.DataSource != null)
             {
@@ -243,17 +210,27 @@ namespace FerreteriaSystem.Registros
                 VentasdataGridView.Columns["ProductoId"].Visible = false;
 
 
+                //int subtotal = 0;
+                //int total = 0;
+                //foreach (var item in detalle)
+                //{
+                //    subtotal += item.importe;
+                //}
+
+                //SubtotalnumericUpDown.Text = subtotal.ToString();
+
+                //total += subtotal;
+
+                //TotalnumericUpDown.Text = total.ToString();
+
                 int subtotal = 0;
                 int total = 0;
                 foreach (var item in detalle)
                 {
                     subtotal += item.importe;
                 }
-
-                SubtotalnumericUpDown.Text = subtotal.ToString();
-
+                SubtotalnumericUpDown.Text = (subtotal * Convert.ToDecimal(0.82)).ToString();
                 total += subtotal;
-
                 TotalnumericUpDown.Text = total.ToString();
             }
         }
@@ -304,6 +281,7 @@ namespace FerreteriaSystem.Registros
             ITBISnumericUpDown.Value = 0;
             TotalnumericUpDown.Value = 0;
             FechadateTimePicker.Value = DateTime.Now;
+            VentasdataGridView.DataSource = string.Empty;
             errorProvider.Clear();
         }
 
@@ -409,34 +387,6 @@ namespace FerreteriaSystem.Registros
             LlenarPrecio();
         }
 
-        public void soloNumeros(KeyPressEventArgs e)
-        {
-            try
-            {
-                if (Char.IsNumber(e.KeyChar))
-                {
-                    e.Handled = false;
-                }
-                else if (Char.IsControl(e.KeyChar))
-                {
-
-                    e.Handled = false;
-                }
-                else if (Char.IsPunctuation(e.KeyChar))
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
         private void PrecionumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             Repositorio<Productos> db = new Repositorio<Productos>(new DAL.FerreteriaContexto());
@@ -453,12 +403,51 @@ namespace FerreteriaSystem.Registros
             decimal cantidad = 0;
             decimal precio = 0;
 
-            //cantidad = ToDecimal(CantidadnumericUpDown.Value);
-            //precio = ToDecimal(PreciotextBox.Text);
-            //ImportetextBox.Text = db.Importe(cantidad, precio).ToString();
+            cantidad = CantidadnumericUpDown.Value;
+            precio = PrecionumericUpDown.Value;
+           // ImportetextBox.Text = ;
+           // ImportetextBox.Text = repositorio.Importe(cantidad, precio).ToString();
         }
 
         private void PrecionumericUpDown_ValueChanged_1(object sender, EventArgs e)
+        {
+            LlenarPrecio();
+            LlenarImporte();
+        }
+
+        private void CantidadnumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            int cantidad = 0;
+            decimal precio = 0;
+            decimal resultado = 0;
+            cantidad = Convert.ToInt32(CantidadnumericUpDown.Text);
+            precio = Convert.ToDecimal(PrecionumericUpDown.Text);
+            resultado = cantidad * precio;
+            ImportetextBox.Text = resultado.ToString();
+        }
+        private void Calculo()
+        {
+            List<VentasDetalle> detalle = new List<VentasDetalle>();
+
+            if (VentasdataGridView.DataSource != null)
+            {
+                detalle = (List<VentasDetalle>)VentasdataGridView.DataSource;
+            }
+            decimal Total = 0;
+            decimal Itbis = 0;
+            decimal SubTotal = 0;
+            foreach (var item in detalle)
+            {
+                Total += item.importe;
+            }
+            Itbis = Total * 0.18m;
+            SubTotal = Total - Itbis;
+            SubtotalnumericUpDown.Text = SubTotal.ToString();
+            ITBISnumericUpDown.Text = Itbis.ToString();
+            TotalnumericUpDown.Text = Total.ToString();
+        }
+
+        private void ImportetextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

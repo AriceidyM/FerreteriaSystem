@@ -171,6 +171,7 @@
             this.ImportetextBox.Name = "ImportetextBox";
             this.ImportetextBox.Size = new System.Drawing.Size(100, 20);
             this.ImportetextBox.TabIndex = 23;
+            this.ImportetextBox.TextChanged += new System.EventHandler(this.ImportetextBox_TextChanged);
             // 
             // label9
             // 
@@ -196,6 +197,7 @@
             this.CantidadnumericUpDown.Name = "CantidadnumericUpDown";
             this.CantidadnumericUpDown.Size = new System.Drawing.Size(57, 20);
             this.CantidadnumericUpDown.TabIndex = 21;
+            this.CantidadnumericUpDown.ValueChanged += new System.EventHandler(this.CantidadnumericUpDown_ValueChanged);
             // 
             // TotalnumericUpDown
             // 
@@ -353,9 +355,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(312, 98);
+            this.button2.Location = new System.Drawing.Point(311, 98);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(23, 23);
+            this.button2.Size = new System.Drawing.Size(24, 23);
             this.button2.TabIndex = 12;
             this.button2.Text = "+";
             this.button2.UseVisualStyleBackColor = true;

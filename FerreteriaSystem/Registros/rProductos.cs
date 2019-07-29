@@ -17,6 +17,7 @@ namespace FerreteriaSystem.Registros
         public rProductos()
         {
             InitializeComponent();
+            ExistenciatextBox.Text = 0.ToString(); 
         }
 
         private Productos LlenaClase()
@@ -24,8 +25,8 @@ namespace FerreteriaSystem.Registros
             Productos productos = new Productos();
             productos.ProductoId = Convert.ToInt32(ProductoIdnumericUpDown.Value);
             productos.Descripcion = DescripciontextBox.Text;
-            productos.Existencia = ExistenciatextBox.Text;
-            productos.Precio = Convert.ToInt32(PrecionumericUpDown.Value);
+            productos.Existencia = Convert.ToInt32(ExistenciatextBox.Text.ToString());
+            productos.Precio = PrecionumericUpDown.Value;
             productos.Fecha = DateTime.Now;
 
             return productos;
@@ -34,7 +35,7 @@ namespace FerreteriaSystem.Registros
         {
             ProductoIdnumericUpDown.Value = productos.ProductoId;
             DescripciontextBox.Text = productos.Descripcion;
-            ExistenciatextBox.Text = productos.Existencia;
+            ExistenciatextBox.Text = Convert.ToString(productos.Existencia);
             PrecionumericUpDown.Value = productos.Precio;
             FechadateTimePicker.Value = productos.Fecha;
         }
@@ -42,7 +43,7 @@ namespace FerreteriaSystem.Registros
         private bool Validar()
         {
             bool paso = true;
-            paso = false;
+            
             errorProvider.Clear();
 
             if (DescripciontextBox.Text == string.Empty)
@@ -50,11 +51,11 @@ namespace FerreteriaSystem.Registros
                 errorProvider.SetError(DescripciontextBox, "Favor LLenar");
                 paso = false;
             }
-            if (ExistenciatextBox.Text == string.Empty)
+            /*if (PrecionumericUpDown.Value ==0)
             {
-                errorProvider.SetError(ExistenciatextBox, "Favor LLenar");
+                errorProvider.SetError(PrecionumericUpDown, "Favor LLenar");
                 paso = false;
-            }
+            }*/
             return paso;
         }
         private void Limpiar()

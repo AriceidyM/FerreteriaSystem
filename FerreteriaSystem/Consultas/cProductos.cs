@@ -42,9 +42,9 @@ namespace FerreteriaSystem.Consultas
                         listado = dbe.GetList(p => p.Descripcion.Contains(CriteriotextBox.Text));
                         break;
 
-                    case "Existencia":
-                        listado = dbe.GetList(p => p.Existencia.Contains(CriteriotextBox.Text));
-                        break;
+                    //case "Existencia":
+                    //    listado = dbe.GetList(p => p.Existencia.Contains(CriteriotextBox.Text));
+                    //    break;
 
                     default:
                         break;

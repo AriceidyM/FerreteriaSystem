@@ -39,7 +39,7 @@ namespace FerreteriaSystem.Registros
         public bool Validar()
         {
             bool paso = true;
-            paso = false;
+           
             errorProvider.Clear();
 
             if (ProductotextBox.Text == string.Empty)
@@ -47,11 +47,7 @@ namespace FerreteriaSystem.Registros
                 errorProvider.SetError(ProductotextBox, "Favor LLenar");
                 paso = false;
             }
-            if (CantidadnumericUpDown.Value > 0)
-            {
-                errorProvider.SetError(CantidadnumericUpDown, "La cantidad no puede ser cero");
-                paso = false;
-            }
+           
             return paso;
         }
         private void Limpiar()

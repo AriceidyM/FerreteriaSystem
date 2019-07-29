@@ -12,7 +12,7 @@ namespace Entidades
         [Key]
         public int ProductoId { get; set; }
         public string Descripcion { get; set; }
-        public string Existencia { get; set; }
+        public int Existencia { get; set; }
         public Decimal Precio { get; set; }
         public DateTime Fecha { get; set; }
 
@@ -21,7 +21,7 @@ namespace Entidades
         {
             ProductoId = 0;
             Descripcion = string.Empty;
-            Existencia = string.Empty;
+            Existencia = 0;
             Precio = 0;
             Fecha = DateTime.Now;
 
